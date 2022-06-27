@@ -17,7 +17,7 @@
   .image {
     img {
       height: 180px;
-      object-fit: cover;
+      object-fit: fill;
       object-position: center;
       width: 100%;
     }
@@ -32,6 +32,7 @@
   p {
 	margin: 0px;
   }
+  font-weight: normal;
 }
 
 .index-anchor {

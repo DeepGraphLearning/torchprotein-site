@@ -5,7 +5,7 @@ title:
 landing:
   title: An open source machine learning library for proteins
   excerpt: > 
-    TorchProtein is a library built upon TorchDrug to easily write and train deep learning models for a wide range of applications related to protein science. It covers various fundamental tasks (function prediction, structure prediction, binding affinity prediction) and models (sequence- and structure-based models) for protein representation learning.
+    TorchProtein is an extension of TorchDrug to easily write and train deep learning models for a wide range of applications related to protein science. It covers various fundamental tasks (function prediction, structure prediction, binding affinity prediction) and models (sequence- and structure-based models) for protein representation learning.
 
 image_grid:
   title: Why TorchProtein?
@@ -34,22 +34,22 @@ card_grid:
   items:
     - title: Protein Data Structure
       url: /tutorial_1
-      image: assets/images/task/property_prediction.png
+      image: assets/images/task/protein.png
       excerpt: >
         Start with basic data structures for manipulating proteins in this beginner tutorial.
     - title: Sequence-based Protein Property Prediction
       url: /tutorial_2
-      image: assets/images/task/pretrain.png
+      image: assets/images/task/sequence_encoder.png
       excerpt: >
         Train a sequence-based encoder to predict properties of proteins, like fluoresence and stability.
     - title: Structure-based Protein Property Prediction
       url: /tutorial_3
-      image: assets/images/task/generation.png
+      image: assets/images/task/structure_encoder.png
       excerpt: >
         Utilize the 3D structures of proteins via building structure-based encoders for property prediction.
-    - title: Pretrained Protein Structure Encoders
+    - title: Pre-train Protein Structure Encoders
       url: /tutorial_4
-      image: assets/images/task/retrosynthesis.png
+      image: assets/images/task/pretrain.png
       excerpt: >
         Pre-train a structure-based encoder with unlabeled proteins to obtain informative protein representations.
 
