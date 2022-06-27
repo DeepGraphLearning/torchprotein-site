@@ -1,4 +1,18 @@
+# NPM
+node_modules
+npm-debug.log
+
 _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
+
+# Temporary files
+tmp
+.DS_Store
+Desktop.ini
+._*
+Thumbs.db
+.Spotlight-V100
+.Trashes
+.idea

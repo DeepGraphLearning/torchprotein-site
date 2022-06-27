@@ -1,0 +1,16 @@
+<div class="call">
+  <div class="call-box-top">
+    {% if page.intro_box %}
+        <div style="font-family: Courier, monospace">$ {{ page.intro_box }}</div>
+    {% endif %}
+  </div>
+  {% if include.show_button %}
+  <div class="call-box-bottom">
+    <button class="button" data-clipboard-text="{{ page.intro_box }}">Copy</button>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+  <script>
+    new ClipboardJS(".button");
+  </script>
+  {% endif %}
+</div>

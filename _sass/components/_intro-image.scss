@@ -1,0 +1,35 @@
+.intro-image {
+  width: 100%;
+  height: auto;
+  margin-top: -40px;
+}
+.intro-image-absolute {
+  max-width: none;
+
+  padding: 0;
+  margin-bottom: 30px;
+  @include media-breakpoint-up(sm) {
+  }
+  @include media-breakpoint-up(md) {
+    position: absolute;
+    bottom: -30px;
+    left: -170px;
+    width: 400px;
+  }
+  @include media-breakpoint-up(lg) {
+    bottom: -30px;
+    left: -190px;
+    width: 450px;
+  }
+  @include media-breakpoint-up(xl) {
+    bottom: -110px;
+    left: -240px;
+    width: 550px;
+  }
+}
+.intro-image-hide-mobile {
+  display: none;
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
+}

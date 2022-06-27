@@ -1,0 +1,43 @@
+permalink: pretty
+title: "TorchProtein"
+  
+google_analytics_id: ""
+homepage:
+  show_call_box: true
+logo:
+  mobile: "assets/images/logo/logo_protein_small.svg"
+  desktop: "assets/images/logo/logo_protein.svg"
+  desktop_height: "36px"
+footer:
+  copyright: "MilaGraph"
+
+seo:
+  meta_og_title: "TorchProtein"
+  meta_og_type: "website"
+  meta_og_url: "https://torchprotein.ai"
+  meta_og_description: "Powerful and flexible machine learning library for drug discovery"
+  
+collections:
+  services:
+    output: true
+  team:
+    output: true
+
+sass:
+  indentWidth: 4
+  style: compact # possible values: nested expanded compact compressed
+  precision: 10
+
+plugins:
+  - jekyll-environment-variables
+  - jekyll-sitemap
+
+include:
+  - _pages
+  # sphinx
+  - .doctrees
+  - _downloads
+  - _images
+  - _modules
+  - _sources
+  - _static

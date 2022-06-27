@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+{% if page.landing %}
+<div class="intro"{% if page.intro_image %} style="background-image: url('{{ page.intro_image | relative_url }}')"{% endif %}>
+  <div class="container">
+    <div class="row justify-content-start">
+      <div class="col-12 col-md-9 order-2 order-md-1">
+        <h1>{{ page.landing.title }}</h1>
+        <p>{{ page.landing.excerpt }}</p>
+      </div>
+      <div class="col-12 col-lg-6 col-md-8 order-3 order-md-3" style="padding-left: 0">
+        {% if page.intro_box %}
+          {% include call.html show_button=true %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{{ content }}

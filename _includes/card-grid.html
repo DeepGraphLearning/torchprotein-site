@@ -1,0 +1,35 @@
+{% if include.id %}
+  {% assign card_grid = page[include.id] %}
+{% else %}
+  {% assign card_grid = card_grid %}
+{% endif %}
+
+<div class="strip strip-grey">
+  <div class="container pt-2 pt-md-8 pb-2 pb-md-10">
+    {% if card_grid.title %}
+    <div class="row justify-content-center">
+      <div class="col-8 pb-4">
+        <h1 style="text-align: center">{{ card_grid.title }}</h1>
+        {% if card_grid.excerpt %}<p style="text-align: center">{{ card_grid.excerpt }}</p>{% endif %}
+      </div>
+    </div>
+    {% endif %}
+    <div class="row justify-content-center">
+      {% for item in card_grid.items %}
+      <div class="col-12 col-md-6 col-lg-3 px-1">
+        <a class="index-anchor"{% if item.url %} href="{{ item.url | relative_url }}"{% endif %}>
+          <div class="card">  
+            <div class="image">
+              <img alt="{{ item.title }} logo" src="{{ item.image | relative_url }}">
+              <div class="card-body">
+                <h3 class="panel-title font-weight-bold">{{ item.title }}</h3>
+                <p>{{ item.excerpt }}</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
