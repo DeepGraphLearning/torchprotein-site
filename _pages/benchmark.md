@@ -55,6 +55,8 @@ and the standard deviation of three runs is also reported.
 - **Task type** - Protein-wise Regression
 - **Dataset statistics** - #Train: 21,446 &nbsp; #Validation: 5,362 &nbsp; #Test: 27,217
 - **Evaluation metric** - Spearman's Rho on the test set (the higher, the better)
+- **Dataset splitting scheme** - Train & Validation: mutants with three or less mutations; Test: mutants with four or more mutations.
+- **Description** - Models are asked to predict the fitness of green fluorescent protein mutants. The prediction target is a real number indicating the logarithm of fluorescence intensity.
 
 | Rank |           Method            |   Test Spearman's Rho    | Reference |             External data              |   #Params   |           Hardware           |
 |:----:|:---------------------------:|:------------------------:|:---------:|:--------------------------------------:|:-----------:|:----------------------------:|
@@ -85,6 +87,8 @@ and the standard deviation of three runs is also reported.
 - **Task type** - Protein-wise Regression
 - **Dataset statistics** - #Train: 53,571 &nbsp; #Validation: 2,512 &nbsp; #Test: 12,851
 - **Evaluation metric** - Spearman's Rho on the test set (the higher, the better)
+- **Dataset splitting scheme** - Train & Validation: proteins from four rounds of experimental design; Test: top candidates with single mutations.
+- **Description** - Models are asked to predict the stability of proteins under natural environment. The prediction target is a real number indicating the experimental measurement of stability.
 
 | Rank |           Method            |   Test Spearman's Rho    | Reference |             External data              |   #Params   |           Hardware           |
 |:----:|:---------------------------:|:------------------------:|:---------:|:--------------------------------------:|:-----------:|:----------------------------:|
@@ -113,6 +117,8 @@ and the standard deviation of three runs is also reported.
 - **Task type** - Protein-wise Regression
 - **Dataset statistics** - #Train: 4,158 &nbsp; #Validation: 520 &nbsp; #Test: 520
 - **Evaluation metric** - Spearman's Rho on the test set (the higher, the better)
+- **Dataset splitting scheme** - Random split.
+- **Description** - Models are asked to predict the activity among first-order mutants of the TEM-1 beta-lactamase protein. The prediction target is the experimentally tested fitness score (a real number) which records the scaled mutation effect for each mutant.
 
 | Rank |           Method            |   Test Spearman's Rho    | Reference |             External data              |   #Params   |          Hardware           |
 |:----:|:---------------------------:|:------------------------:|:---------:|:--------------------------------------:|:-----------:|:---------------------------:|
@@ -141,6 +147,8 @@ and the standard deviation of three runs is also reported.
 - **Task type** - Protein-wise Classification
 - **Dataset statistics** - #Train: 62,478 &nbsp; #Validation: 6,942 &nbsp; #Test: 1,999
 - **Evaluation metric** - Accuracy on the test set (the higher, the better)
+- **Dataset splitting scheme** - Random split; remove redundancy in training and validation sets with 30% sequence identity cutoff against the test set.
+- **Description** - Models are required to predict whether a protein is soluble or not (binary classification).
 
 | Rank |           Method            |        Test Acc         | Reference |             External data              |   #Params   |          Hardware           |
 |:----:|:---------------------------:|:-----------------------:|:---------:|:--------------------------------------:|:-----------:|:---------------------------:|
@@ -171,6 +179,8 @@ and the standard deviation of three runs is also reported.
 - **Task type** - Protein-wise Classification
 - **Dataset statistics** - #Train: 8,945 &nbsp; #Validation: 2,248 &nbsp; #Test: 2,768
 - **Evaluation metric** - Accuracy on the test set (the higher, the better)
+- **Dataset splitting scheme** - Random split; remove redundancy in training and validation sets with 30% sequence identity cutoff against the test set.
+- **Description** - Models are required to predict where a natural protein locates in the cell. The label denotes 10 possible locations.
 
 | Rank |           Method            |        Test Acc         | Reference |             External data              |   #Params   |          Hardware           |
 |:----:|:---------------------------:|:-----------------------:|:---------:|:--------------------------------------:|:-----------:|:---------------------------:|
@@ -199,6 +209,8 @@ and the standard deviation of three runs is also reported.
 - **Task type** - Protein-wise Classification
 - **Dataset statistics** - #Train: 5,161 &nbsp; #Validation: 1,727 &nbsp; #Test: 1,746
 - **Evaluation metric** - Accuracy on the test set (the higher, the better)
+- **Dataset splitting scheme** - Random split; remove redundancy in training and validation sets with 30% sequence identity cutoff against the test set.
+- **Description** - Models are asked to predict whether a protein is "membrane-bound" or "soluble" (binary classification).
 
 | Rank |           Method            |        Test Acc         | Reference |             External data              |   #Params   |          Hardware           |
 |:----:|:---------------------------:|:-----------------------:|:---------:|:--------------------------------------:|:-----------:|:---------------------------:|
@@ -229,6 +241,8 @@ and the standard deviation of three runs is also reported.
 - **Task type** - Residue-pair Classification
 - **Dataset statistics** - #Train: 25,299 &nbsp; #Validation: 224 &nbsp; #Test: 40
 - **Evaluation metric** - L/5 Precision (L: protein sequence length) on the test set (the higher, the better)
+- **Dataset splitting scheme** - Adopt the splits of ProteinNet; use the data of CASP12 for test. 
+- **Description** - Models are asked to estimate whether each pair of residues contact or not (binary classification).
 
 | Rank |          Method          |   Test L/5 Precision    | Reference |             External data              |   #Params   |          Hardware           |
 |:----:|:------------------------:|:-----------------------:|:---------:|:--------------------------------------:|:-----------:|:---------------------------:|
@@ -252,6 +266,8 @@ and the standard deviation of three runs is also reported.
 - **Task type** - Protein-wise Classification
 - **Dataset statistics** - #Train: 12,312 &nbsp; #Validation: 736 &nbsp; #Test: 718
 - **Evaluation metric** - Accuracy on the test set (the higher, the better)
+- **Dataset splitting scheme** - Adopt data from SCOP 1.75 database; entire superfamilies are held out from training to compose the test set.
+- **Description** - Models are required to classify the global structural topology of a protein on the fold level. The label indicates 1195 different folding topologies. Models are expected to detect the proteins with similar structures but dissimilar sequences, *i.e.*, performing remote homology detection.
 
 | Rank |           Method            |        Test Acc         | Reference |             External data              |   #Params   |          Hardware           |
 |:----:|:---------------------------:|:-----------------------:|:---------:|:--------------------------------------:|:-----------:|:---------------------------:|
@@ -277,6 +293,8 @@ and the standard deviation of three runs is also reported.
 - **Task type** - Residue-wise Classification
 - **Dataset statistics** - #Train: 8,678 &nbsp; #Validation: 2,170 &nbsp; #Test: 513
 - **Evaluation metric** - Accuracy on the test set (the higher, the better)
+- **Dataset splitting scheme** - Training & validation: from NetSurfP; Test: CB513 dataset.
+- **Description** - Models are asked to predict the secondary structure (*i.e.*, coil, strand or helix) of each residue.
 
 | Rank |           Method            |        Test Acc         | Reference |             External data              |   #Params   |          Hardware           |
 |:----:|:---------------------------:|:-----------------------:|:---------:|:--------------------------------------:|:-----------:|:---------------------------:|
@@ -302,6 +320,8 @@ and the standard deviation of three runs is also reported.
 - **Task type** - Protein-pair Classification
 - **Dataset statistics** - #Train: 1,668 &nbsp; #Validation: 131 &nbsp; #Test: 373
 - **Evaluation metric** - Accuracy on the test set (the higher, the better)
+- **Dataset splitting scheme** - Random split; remove redundancy in training and validation sets with 40% sequence identity cutoff against the test set.
+- **Description** - Models are asked to predict whether two yeast proteins interact or not (binary classification).
 
 | Rank |           Method            |        Test Acc         | Reference |             External data              |   #Params   |          Hardware           |
 |:----:|:---------------------------:|:-----------------------:|:---------:|:--------------------------------------:|:-----------:|:---------------------------:|
@@ -330,6 +350,8 @@ and the standard deviation of three runs is also reported.
 - **Task type** - Protein-pair Classification
 - **Dataset statistics** - #Train: 6,844 &nbsp; #Validation: 277 &nbsp; #Test: 227
 - **Evaluation metric** - Accuracy on the test set (the higher, the better)
+- **Dataset splitting scheme** - Random split; remove redundancy in training and validation sets with 40% sequence identity cutoff against the test set.
+- **Description** - Models are asked to predict whether two human proteins interact or not (binary classification).
 
 | Rank |           Method            |        Test Acc         | Reference |             External data              |   #Params   |          Hardware           |
 |:----:|:---------------------------:|:-----------------------:|:---------:|:--------------------------------------:|:-----------:|:---------------------------:|
@@ -358,6 +380,8 @@ and the standard deviation of three runs is also reported.
 - **Task type** - Protein-pair Regression
 - **Dataset statistics** - #Train: 2,127 &nbsp; #Validation: 212 &nbsp; #Test: 343
 - **Evaluation metric** - RMSE on the test set (the lower, the better)
+- **Dataset splitting scheme** - Train: wild-type complexes as well as mutants with at most 2 mutations; Validation: mutants with 3 or 4 mutations; Test: mutants with more than 4 mutations.
+- **Description** - Models are required to predict the binding affinity between two proteins, measured by pKd (a real number). This task performs evaluation under a multi-round protein binder design scenario.
 
 | Rank |           Method            |        Test RMSE         | Reference |             External data              |   #Params   |          Hardware           |
 |:----:|:---------------------------:|:------------------------:|:---------:|:--------------------------------------:|:-----------:|:---------------------------:|
@@ -388,6 +412,8 @@ and the standard deviation of three runs is also reported.
 - **Task type** - Protein-ligand Regression
 - **Dataset statistics** - #Train: 16,436 &nbsp; #Validation: 937 &nbsp; #Test: 285
 - **Evaluation metric** - RMSE on the test set (the lower, the better)
+- **Dataset splitting scheme** - Random split; remove redundancy in training and validation sets with 90% sequence identity cutoff against the test set.
+- **Description** - Models are asked to predict the binding affinity between a protein and a ligand, measured by pKd (a real number).
 
 | Rank |           Method            |        Test RMSE         | Reference |             External data              |   #Params   |          Hardware           |
 |:----:|:---------------------------:|:------------------------:|:---------:|:--------------------------------------:|:-----------:|:---------------------------:|
@@ -414,6 +440,8 @@ and the standard deviation of three runs is also reported.
 - **Task type** - Protein-ligand Regression
 - **Dataset statistics** - #Train: 7,900 &nbsp; #Validation: 878 &nbsp; #Test: 5,230
 - **Evaluation metric** - RMSE on the test set (the lower, the better)
+- **Dataset splitting scheme** - Four protein classes (ER, GPCR, ion channels and receptor tyrosine kinases) are held out from training and validation for generalization test. 
+- **Description** - Models are asked to predict the binding affinity between a protein and a ligand, measured by pKd (a real number).
 
 | Rank |           Method            |        Test RMSE         | Reference |             External data              |   #Params   |          Hardware           |
 |:----:|:---------------------------:|:------------------------:|:---------:|:--------------------------------------:|:-----------:|:---------------------------:|
