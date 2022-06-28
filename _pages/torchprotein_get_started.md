@@ -120,7 +120,7 @@ Then, we add spatial, KNN and sequential edges to the residue-level graph to mod
 from torchdrug import layers
 from torchdrug.layers import geometry
 
-graph_construction_model = layers.GraphConstruction(node_layer=geometry.AlphaCarbonNode(), 
+graph_construction_model = layers.GraphConstruction(node_layers=[geometry.AlphaCarbonNode()], 
                                                     edge_layers=[geometry.SpatialEdge(distance=10.0, sequence_distance=5),
                                                                  geometry.KNNEdge(k=10, sequence_distance=5),
                                                                  geometry.SequentialEdge(distance=2)],
@@ -236,7 +236,7 @@ with open("beta_cnn.json", "w") as fout:
 solver.save("beta_cnn.pth")
 ```
 
-To load a pretrained model, we don't bother to define the model again. Use `core.Configurable.load_config_dict`
+To load a pre-trained model, we don't bother to define the model again. Use `core.Configurable.load_config_dict`
 and TorchProtein will automatically parse the model from the hyperparameters.
 
 ```python
@@ -279,7 +279,7 @@ model = models.GearNet(input_dim=21, hidden_dims=[512, 512, 512, 512, 512, 512],
                        batch_norm=True, concat_hidden=True, short_cut=True, readout="sum")
 ```
 
-Similarly, we warp this encoder together with the graph construction model into the multiple binary classification module 
+Similarly, we wrap this encoder together with the graph construction model into the multiple binary classification module 
 and define the task with binary cross entropy loss.
 
 ```python

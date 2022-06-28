@@ -17,7 +17,7 @@ and protein-ligand interaction (PLI) prediction.
 
 TorchProtein defines diverse sequence-based models to learn protein sequence representations. 
 In this tutorial, we use a two-layer 1D CNN as the protein sequence representation model for all considered tasks. 
-First, let's define such a model via the `models.CNN` module.
+First, let's define such a model via the `models.ProteinCNN` module.
 
 ```python
 from torchdrug import models
@@ -169,7 +169,7 @@ Valid mask:  tensor([True, True, True])
 train samples: 25299, valid samples: 224, test samples: 34
 ```
 
-To perform contact prediction, we warp the CNN encoder into the `tasks.ContactPrediction` module which appends a task-specific MLP prediction head upon CNN. 
+To perform contact prediction, we wrap the CNN encoder into the `tasks.ContactPrediction` module which appends a task-specific MLP prediction head upon CNN. 
 Two residues with sequence gap larger than `gap` are seen as interacted if their Euclidean distance is within `threshold`. 
 Different from previous tasks, the maximum truncation length `max_length` is defined in the task now, since the truncation behavior is different on the test set in the contact prediction task. 
 For the test set, to save memory, we will split the test sequences into several blocks according to `max_length`. 
@@ -223,7 +223,7 @@ The label of first sample:  -12.2937
 train samples: 2421, valid samples: 203, test samples: 326
 ```
 
-To perform PPI affinity prediction, we warp the CNN encoder into the `tasks.InteractionPrediction` module which appends a task-specific MLP prediction head upon CNN. 
+To perform PPI affinity prediction, we wrap the CNN encoder into the `tasks.InteractionPrediction` module which appends a task-specific MLP prediction head upon CNN. 
 
 ```python
 task = tasks.InteractionPrediction(model, task=dataset.tasks,

@@ -1,19 +1,19 @@
 ---
-title: Tutorial 4 - Pretrained Protein Structure Representations
+title: Tutorial 4 - Pre-trained Protein Structure Representations
 layout: page
 permalink: /tutorial_4
 ---
 
 In many structure-based protein understanding tasks, it is expensive in both time and money to collect labeled data. 
-As a solution, self-supervised pretraining strategies are proposed to acquire informative protein representations from massive unlabeled protein structures.
-In this tutorial, we will introduce how to pretrain a structure-based protein encoder and then finetune it on downstream tasks.
+As a solution, self-supervised pre-training strategies are proposed to acquire informative protein representations from massive unlabeled protein structures.
+In this tutorial, we will introduce how to pre-train a structure-based protein encoder and then fine-tune it on downstream tasks.
 
 - TOC
 {:toc} 
 
 # Represent Protein Structure Data
 
-In this part, we will learn how to fetch a structure-based dataset for pretraining 
+In this part, we will learn how to fetch a structure-based dataset for pre-training 
 and further augment each sample with additional edges to better represent its structure. 
 
 ## Protein Structure Dataset
@@ -141,9 +141,9 @@ gearnet_edge = models.GearNet(input_dim=21, hidden_dims=[512, 512, 512],
                               batch_norm=True, concat_hidden=True, short_cut=True, readout="sum")
 ```
 
-# Self-Supervised Protein Structure Pretraining
+# Self-Supervised Protein Structure Pre-training
 
-In this tutorial, we adopt two pretraining algorithms, **Multiview Contrastive Learning** and **Residue Type Prediction**, 
+In this tutorial, we adopt two pre-training algorithms, **Multiview Contrastive Learning** and **Residue Type Prediction**, 
 to learn protein representations from unlabeled protein structures.
 
 ## Multiview Contrastive Learning
@@ -161,7 +161,7 @@ The following figure illustrates the high-level idea of Multiview Contrastive Le
 We first wrap the GearNet-Edge model into the `models.MultiviewContrast` module, 
 in which we pass the augmentation functions to use by the `aug_funcs` parameter and pass the cropping functions to use by the `crop_funcs` parameter. 
 This module appends an MLP prediction head upon GearNet-Edge. 
-After that, the Multiview Contrast module together with the graph construction model are warped into the `tasks.Unsupervised` module for self-supervised pretraining. 
+After that, the Multiview Contrast module together with the graph construction model are wrapped into the `tasks.Unsupervised` module for self-supervised pre-training. 
 
 Here we take two different kinds of cropping functions: Subsequence and Subspace. 
 The former randomly takes a shorter consecutive subsequences with length at most 50, 
@@ -178,9 +178,9 @@ model = models.MultiviewContrast(gearnet_edge, aug_funcs=[geometry.IdentityNode(
 task = tasks.Unsupervised(model, graph_construction_model=graph_construction_model)
 ```
 
-Now we can starting pretraining. 
+Now we can start pre-training. 
 We set up an optimizer for our model, and put everything together into an Engine instance. 
-It takes about 5 minutes to train the model for 10 epochs on this pretraining task. We finally save the model weights at the last epoch. 
+It takes about 5 minutes to train the model for 10 epochs on this pre-training task. We finally save the model weights at the last epoch. 
 
 ```python
 from torchdrug import core
@@ -207,7 +207,7 @@ The following figure illustrates the high-level idea of Residue Type Prediction.
 </div>
 
 To perform this task, we wrap the GearNet-Edge model as well as the graph construction model into the `tasks.AttributeMasking` module, in which an MLP prediction head will be appended upon GearNet-Edge.
-Note that this module can also be used to pretrain molecule encoders. 
+Note that this module can also be used to pre-train molecule encoders. 
 The module will choose whether to predict atom or residue type according to the view of graphs in the training set.
 
 ```python
@@ -215,8 +215,8 @@ task = tasks.AttributeMasking(gearnet_edge, graph_construction_model=graph_const
                               mask_rate=0.15, num_mlp_layer=2)
 ```
 
-Now we can start pretraining. Similar as above, we set up an optimizer for our model, and put everything together into an Engine instance. 
-It takes about 8 minutes to train the model for 10 epochs on this pretraining task. We finally save the model weights at the last epoch. 
+Now we can start pre-training. Similar as above, we set up an optimizer for our model, and put everything together into an Engine instance. 
+It takes about 8 minutes to train the model for 10 epochs on this pre-training task. We finally save the model weights at the last epoch. 
 
 ```python
 optimizer = torch.optim.Adam(task.parameters(), lr=1e-4)
@@ -226,7 +226,7 @@ solver.train(num_epoch=10)
 solver.save("ResidueTypePrediction_ECToy.pth")
 ```
 
-# Finetuning on Downstream Task
+# Fine-tuning on Downstream Task
 
 We employ the protein functional terms prediction on the toy Enzyme Commission dataset as the downstream task. 
 This task aims to predict whether a protein owns several specific functions, in which owning each function can be expressed by a binary label. 
@@ -259,11 +259,11 @@ auprc@micro: 0.13146
 f1_max: 0.243544
 ```
 
-## 2. Finetune the Multiview Contrastive Learning model
+## 2. Fine-tune the Multiview Contrastive Learning model
 {:.no_toc}
 
-We then evaluate the GearNet-Edge model pretrained by Multiview Contrastive Learning. 
-We initialize the GearNet-Edge with pretrained model weights. It takes about 8 minutes to train the model for 10 epochs on this task. 
+We then evaluate the GearNet-Edge model pre-trained by Multiview Contrastive Learning. 
+We initialize the GearNet-Edge with pre-trained model weights. It takes about 8 minutes to train the model for 10 epochs on this task. 
 
 ```python
 optimizer = torch.optim.Adam(task.parameters(), lr=1e-4)
@@ -291,10 +291,10 @@ auprc@micro: 0.184848
 f1_max: 0.268139
 ```
 
-## 3. Finetune the Residue Type Prediction model
+## 3. Fine-tune the Residue Type Prediction model
 {:.no_toc}
 
-We then evaluate the GearNet-Edge model pretrained by Residue Type Prediction. It still takes about 8 minutes to train the model for 10 epochs on this task.
+We then evaluate the GearNet-Edge model pre-trained by Residue Type Prediction. It still takes about 8 minutes to train the model for 10 epochs on this task.
 
 ```python
 optimizer = torch.optim.Adam(task.parameters(), lr=1e-4)
@@ -316,6 +316,6 @@ auprc@micro: 0.176984
 f1_max: 0.302019
 ```
 
-**Note.** We observe that finetuning the pretrained model outperforms training from scratch. 
+**Note.** We observe that fine-tuning the pre-trained model outperforms training from scratch. 
 However, the performance of both schemes are not satisfactory enough, which is mainly attributed to the over small dataset size. 
-We suggest users to perform pretraining on a larger protein structure dataset (*e.g.*, `datasets.AlphaFoldDB`) to fully investigate the effectiveness of pretraining. 
+We suggest users to perform pre-training on a larger protein structure dataset (*e.g.*, `datasets.AlphaFoldDB`) to fully investigate the effectiveness of pre-training. 

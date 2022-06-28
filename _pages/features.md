@@ -14,7 +14,7 @@ and apply machine learning models and graph construction methods upon it.
 ```python
 pdb_file = utils.download("https://files.rcsb.org/download/2LWZ.pdb", "./")
 protein = data.Protein.from_pdb(pdb_file, atom_feature="position", bond_feature="length", residue_feature="symbol")
-graph_construction_model = layers.GraphConstruction(node_layer=geometry.AlphaCarbonNode(), 
+graph_construction_model = layers.GraphConstruction(node_layers=[geometry.AlphaCarbonNode()], 
                                                     edge_layers=[geometry.SpatialEdge(distance=10.0, sequence_distance=5)])
 model = models.GearNet(input_dim=21, hidden_dims=[512, 512, 512], num_relation=1, readout="sum")
 processed_protein = graph_construction_model(data.Protein.pack([protein]))

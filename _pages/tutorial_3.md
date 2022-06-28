@@ -106,7 +106,7 @@ We achieve this goal through the `layers.GraphConstruction` and `layers.geometry
 from torchdrug import layers
 from torchdrug.layers import geometry
 
-graph_construction_model = layers.GraphConstruction(node_layer=geometry.AlphaCarbonNode())
+graph_construction_model = layers.GraphConstruction(node_layers=[geometry.AlphaCarbonNode()])
 
 _protein = data.Protein.pack([protein])
 protein_ = graph_construction_model(_protein)
@@ -130,7 +130,7 @@ In addition, we remove the spatial edges between the residues close with each ot
 We achieve this by the `layers.geometry.SpatialEdge` module. 
 
 ```python
-graph_construction_model = layers.GraphConstruction(node_layer=geometry.AlphaCarbonNode(), 
+graph_construction_model = layers.GraphConstruction(node_layers=[geometry.AlphaCarbonNode()], 
                                                     edge_layers=[geometry.SpatialEdge(distance=10.0, sequence_distance=5)])
 
 _protein = data.Protein.pack([protein])
@@ -160,11 +160,11 @@ which forbids messages passing through these nodes in a GNN model. In the next s
 ## Step 3: Add KNN Edges
 {:.no_toc}
 
-Based on the residues-level graph above, we further consider adding **KNN edges** where each node will be connected to its K-nearest neighbors. 
+Based on the residue-level graph above, we further consider adding **KNN edges** where each node will be connected to its K-nearest neighbors. 
 Also, we will remove the KNN edges between the residues close with each other in the protein sequence. We achieve this by the `layers.geometry.KNNEdge` module.
 
 ```python
-graph_construction_model = layers.GraphConstruction(node_layer=geometry.AlphaCarbonNode(), 
+graph_construction_model = layers.GraphConstruction(node_layers=[geometry.AlphaCarbonNode()], 
                                                     edge_layers=[geometry.SpatialEdge(distance=10.0, sequence_distance=5),
                                                                  geometry.KNNEdge(k=10, sequence_distance=5)])
 
@@ -200,7 +200,7 @@ Based on the residue-level graph above, we further consider adding **sequential 
 We achieve this via the `layers.geometry.SequentialEdge` module.
 
 ```python
-graph_construction_model = layers.GraphConstruction(node_layer=geometry.AlphaCarbonNode(), 
+graph_construction_model = layers.GraphConstruction(node_layers=[geometry.AlphaCarbonNode()], 
                                                     edge_layers=[geometry.SpatialEdge(distance=10.0, sequence_distance=5),
                                                                  geometry.KNNEdge(k=10, sequence_distance=5),
                                                                  geometry.SequentialEdge(distance=2)])
@@ -294,11 +294,11 @@ Therefore, we formulate this task as **multiple binary classification tasks** an
 ## Protein Function Prediction with GearNet
 {:.no_toc}
 
-We first warp the GearNet model into the `tasks.MultipleBinaryClassification` module that performs all the considered binary classification tasks jointly, 
+We first wrap the GearNet model into the `tasks.MultipleBinaryClassification` module that performs all the considered binary classification tasks jointly, 
 in which an MLP prediction head is appended upon GearNet to derive all the task predictions.
 
 ```python
-graph_construction_model = layers.GraphConstruction(node_layer=geometry.AlphaCarbonNode(), 
+graph_construction_model = layers.GraphConstruction(node_layers=[geometry.AlphaCarbonNode()], 
                                                     edge_layers=[geometry.SpatialEdge(distance=10.0, sequence_distance=5),
                                                                  geometry.KNNEdge(k=10, sequence_distance=5),
                                                                  geometry.SequentialEdge(distance=2)],
@@ -330,11 +330,11 @@ f1_max: 0.212811
 
 ## Protein Function Prediction with GearNet-Edge
 
-We next warp the GearNet-Edge model into the `tasks.MultipleBinaryClassification` module that performs all the considered binary classification tasks jointly, 
+We next wrap the GearNet-Edge model into the `tasks.MultipleBinaryClassification` module that performs all the considered binary classification tasks jointly, 
 in which an MLP prediction head is appended upon GearNet-Edge to derive all the task predictions.
 
 ```python
-graph_construction_model = layers.GraphConstruction(node_layer=geometry.AlphaCarbonNode(), 
+graph_construction_model = layers.GraphConstruction(node_layers=[geometry.AlphaCarbonNode()], 
                                                     edge_layers=[geometry.SpatialEdge(distance=10.0, sequence_distance=5),
                                                                  geometry.KNNEdge(k=10, sequence_distance=5),
                                                                  geometry.SequentialEdge(distance=2)],
