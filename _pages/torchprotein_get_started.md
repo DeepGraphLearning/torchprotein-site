@@ -4,15 +4,14 @@ layout: page
 permalink: /get_started
 ---
 
-TorchProtein is a [PyTorch]- and [TorchDrug]-based machine learning toolbox designed for several purposes of protein science.
+TorchProtein is built on top of [TorchDrug] to facilitate protein science with machine learning techniques from multiple aspects.
 
-- Universal representation of proteins through a unified data structure with GPU support
-- Rapid prototyping of machine learning based protein research with a large collection of flexible building blocks
-- Maintaining a comprehensive set of datasets, models and tasks for benchmarking existing and future methods
+- Represent the protein sequence and structure with a unified data structure which supports GPU acceleration
+- Define extensive and flexible building blocks for the rapid prototyping of machine learning solutions to diverse protein tasks
+- Empower protein representation learning related applications with comprehensive benchmarks and a protein model zoo
 
 Before we start, make sure you are familiar with TorchDrug. Check out the [overview of TorchDrug].
 
-[PyTorch]: https://pytorch.org/
 [TorchDrug]: https://torchdrug.ai/
 [overview of TorchDrug]: https://torchdrug.ai/get_started
 
@@ -301,29 +300,3 @@ solver.evaluate("valid")
 ```
 
 **Note.** We can use the same schemes as those in the sequence-based task to save and load models.
-
-# Hierarchical Interfaces
-
-Similar as TorchDrug, TorchProtein provides hierarchical interfaces to accommodate all kinds of development. 
-These interfaces range from low-level protein data structures and operations, mid-level layers and models, 
-to high-level protein understanding tasks.
-By utilizing the building blocks from a lower level, we can easily customize modules at any level with minimal efforts.
-
-<div class="container col-md-9">
-  <div class="row justify-content-center">
-    <img alt="Hierarchy of TorchProtein" src="assets/images/library/torchprotein_hierarchy.svg" style="max-width:100%">
-  </div>
-</div>
-
-The correspondences between modules and hierarchical interfaces are
-
-- ``torchdrug.data``: Protein data structures and protein operations. e.g. `data.Protein`
-- ``torchdrug.datasets``: Protein sequence and structure datasets. e.g. `datasets.EnzymeCommission`
-- ``torchdrug.layers``: Neural network layers, graph construction layers and loss layers. e.g. `layers.GraphConstruction`
-- ``torchdrug.models``: Protein representation learning models. e.g. `models.GearNet`
-- ``torchdrug.tasks``: Task-specific routines for protein understanding. e.g. `tasks.MultipleBinaryClassification`
-- ``torchdrug.core``: Engine for training and evaluation.
-
-For more details about these interfaces, please refer to the [document].
-
-[document]: {{ "/docs/api/" | relative_url }}

@@ -40,6 +40,10 @@ team:
     url: https://lujiarui.github.io/
     title: Mila - Quebec AI Institute
     image: assets/images/team/jiarui_lu.jpg
+  - name: Xinyu Yuan
+    url: https://github.com/KatarinaYuan
+    title: Peking University
+    image: assets/images/team/xinyu_yuan.jpg
   - name: Yangtian Zhang
     url: https://zytzrh.github.io/
     title: Mila - Quebec AI Institute
@@ -76,10 +80,10 @@ committee:
     image: assets/images/team/aurelie_lozano.jpeg
 ---
   
-TorchProtein was initiated by [MilaGraph] to integrate recent advances in machine learning guided protein science and accelerate development, 
-with the vision of creating an easy access to protein modeling techniques for everyone. The library is designed for 
-the practitioners from the machine learning community to apply fundamental algorithms to protein modeling applications,
-with minimal efforts on domain knowledge and trivial details.
+TorchProtein is an open source project initiated by [MilaGraph], aiming at integrating the efforts from the community to boost machine learning guided protein science. 
+Facing the practitioners from machine learning community, TorchProtein minimizes the requirements of domain knowledge during model and algorithm design.
+For the practitioners from computational biology community, TorchProtein encapsulates algorithmic details into easy-to-use modules and maximizes the flexibility of analyzing customized experimental data.
+TorchProtein will be continually updated upon cutting-edge research progress. 
 
 For collaboration, please send an email to torchprotein@gmail.com
 

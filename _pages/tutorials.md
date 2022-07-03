@@ -4,16 +4,6 @@ layout: page
 permalink: /tutorials
 ---
 
-TorchProtein is a [PyTorch]- and [TorchDrug]-based machine learning toolbox designed for several purposes of protein science.
-
-- Universal representation of proteins through a unified data structure with GPU support
-- Rapid prototyping of machine learning based protein research with a large collection of flexible building blocks
-- Maintaining a comprehensive set of datasets, models and tasks for benchmarking existing and future methods
-
-[PyTorch]: https://pytorch.org/
-[TorchDrug]: https://torchdrug.ai/
-[overview of TorchDrug]: https://torchdrug.ai/get_started
-
 Here, we provide four tutorials to show new users a general picture of TorchProtein from four perspectives, 
 the protein data structure, the solution to sequence-based protein property prediction, 
 the solution to structure-based property prediction and how to learn protein representations from unlabeled protein structures. 
