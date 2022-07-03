@@ -42,7 +42,7 @@ team:
     image: assets/images/team/jiarui_lu.jpg
   - name: Xinyu Yuan
     url: https://github.com/KatarinaYuan
-    title: Peking University
+    title: Mila - Quebec AI Institute
     image: assets/images/team/xinyu_yuan.jpg
   - name: Yangtian Zhang
     url: https://zytzrh.github.io/
