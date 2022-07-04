@@ -24,6 +24,18 @@ leader:
     image: assets/images/team/zhaocheng_zhu.jpg
     
 team:
+  - name: Xinyu Yuan
+    url: https://github.com/KatarinaYuan
+    title: Peking University
+    image: assets/images/team/xinyu_yuan.jpg
+  - name: Hendrik Strobelt
+    url: http://hendrik.strobelt.com/
+    title: IBM Research
+    image: assets/images/team/hendrik_strobelt.jpg
+  - name: Jiarui Lu
+    url: https://lujiarui.github.io/
+    title: Mila - Quebec AI Institute
+    image: assets/images/team/jiarui_lu.jpg
   - name: Meng Qu
     url: https://mnqu.github.io/
     title: Mila - Quebec AI Institute
@@ -36,22 +48,10 @@ team:
     url: https://hui2000ji.github.io/
     title: Mila - Quebec AI Institute
     image: assets/images/team/huiyu_cai.jpg
-  - name: Jiarui Lu
-    url: https://lujiarui.github.io/
-    title: Mila - Quebec AI Institute
-    image: assets/images/team/jiarui_lu.jpg
-  - name: Xinyu Yuan
-    url: https://github.com/KatarinaYuan
-    title: Mila - Quebec AI Institute
-    image: assets/images/team/xinyu_yuan.jpg
   - name: Yangtian Zhang
     url: https://zytzrh.github.io/
     title: Mila - Quebec AI Institute
     image: assets/images/team/yangtian_zhang.jpg
-  - name: Hendrik Strobelt
-    url: http://hendrik.strobelt.com/
-    title: IBM Research
-    image: assets/images/team/hendrik_strobelt.jpg
   - name: Arian Jamasb
     url: https://jamasb.io/
     title: University of Cambridge
@@ -85,7 +85,7 @@ Facing the practitioners from machine learning community, TorchProtein minimizes
 For the practitioners from computational biology community, TorchProtein encapsulates algorithmic details into easy-to-use modules and maximizes the flexibility of analyzing customized experimental data.
 TorchProtein will be continually updated upon cutting-edge research progress. 
 
-For collaboration, please send an email to torchprotein@gmail.com
+For collaboration, please send an email to torchdrug@gmail.com
 
 [MilaGraph]: https://github.com/DeepGraphLearning
 
