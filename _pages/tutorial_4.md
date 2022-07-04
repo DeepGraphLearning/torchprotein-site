@@ -33,7 +33,7 @@ class EnzymeCommissionToy(datasets.EnzymeCommission):
     processed_file = "enzyme_commission_toy.pkl.gz"
     test_cutoffs = [0.3, 0.4, 0.5, 0.7, 0.95]
 
-truncuate_transform = transforms.TruncateProtein(max_length=350, random=False, residue=True)
+truncuate_transform = transforms.TruncateProtein(max_length=350, random=False)
 protein_view_transform = transforms.ProteinView(view='residue')
 transform = transforms.Compose([truncuate_transform, protein_view_transform])
 
@@ -82,9 +82,9 @@ from torchdrug import layers
 from torchdrug.layers import geometry
 
 graph_construction_model = layers.GraphConstruction(node_layers=[geometry.AlphaCarbonNode()], 
-                                                    edge_layers=[geometry.SpatialEdge(distance=10.0, sequence_distance=5),
-                                                                 geometry.KNNEdge(k=10, sequence_distance=5),
-                                                                 geometry.SequentialEdge(distance=2)],
+                                                    edge_layers=[geometry.SpatialEdge(radius=10.0, min_distance=5),
+                                                                 geometry.KNNEdge(k=10, min_distance=5),
+                                                                 geometry.SequentialEdge(max_distance=2)],
                                                     edge_feature="gearnet")
 
 _protein = data.Protein.pack([protein])
@@ -172,9 +172,9 @@ After cropping the protein, we randomly choose whether to randomly mask edges in
 from torchdrug import layers, models, tasks
 from torchdrug.layers import geometry
 
-model = models.MultiviewContrast(gearnet_edge, aug_funcs=[geometry.IdentityNode(), geometry.RandomEdgeMask(mask_rate=0.15)],
-                                 crop_funcs=[geometry.SubsequenceNode(entity_level="residue", cropping=50), 
-                                             geometry.SubspaceNode(entity_level="residue", k=15, cutoff=15.0)], num_mlp_layer=2)
+model = models.MultiviewContrast(gearnet_edge, noise_funcs=[geometry.IdentityNode(), geometry.RandomEdgeMask(mask_rate=0.15)],
+                                 crop_funcs=[geometry.SubsequenceNode(max_length=50), 
+                                             geometry.SubspaceNode(entity_level="residue", min_neighbor=15, min_radius=15.0)], num_mlp_layer=2)
 task = tasks.Unsupervised(model, graph_construction_model=graph_construction_model)
 ```
 

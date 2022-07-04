@@ -65,7 +65,7 @@ team:
     title: Tsinghua University
     image: assets/images/team/runcheng_liu.jpg
 
-committee:
+collaborator:
   - name: Payel Das
     url: https://researcher.watson.ibm.com/researcher/view.php?person=us-daspa
     title: IBM Research
@@ -101,6 +101,6 @@ For collaboration, please send an email to torchprotein@gmail.com
 
 {% include team.html id="team" %}
 
-# Steering Committee
+# Collaborator
 
-{% include team.html id="committee" %}
+{% include team.html id="collaborator" %}

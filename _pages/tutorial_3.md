@@ -23,7 +23,7 @@ During dataset construction, we can pass the composition of two transformations 
 ```python
 from torchdrug import transforms
 
-truncate_transform = transforms.TruncateProtein(max_length=350, random=False, residue=True)
+truncate_transform = transforms.TruncateProtein(max_length=350, random=False)
 protein_view_transform = transforms.ProteinView(view="residue")
 transform = transforms.Compose([truncate_transform, protein_view_transform])
 ```
@@ -131,7 +131,7 @@ We achieve this by the `layers.geometry.SpatialEdge` module.
 
 ```python
 graph_construction_model = layers.GraphConstruction(node_layers=[geometry.AlphaCarbonNode()], 
-                                                    edge_layers=[geometry.SpatialEdge(distance=10.0, sequence_distance=5)])
+                                                    edge_layers=[geometry.SpatialEdge(radius=10.0, min_distance=5)])
 
 _protein = data.Protein.pack([protein])
 protein_ = graph_construction_model(_protein)
@@ -165,8 +165,8 @@ Also, we will remove the KNN edges between the residues close with each other in
 
 ```python
 graph_construction_model = layers.GraphConstruction(node_layers=[geometry.AlphaCarbonNode()], 
-                                                    edge_layers=[geometry.SpatialEdge(distance=10.0, sequence_distance=5),
-                                                                 geometry.KNNEdge(k=10, sequence_distance=5)])
+                                                    edge_layers=[geometry.SpatialEdge(radius=10.0, min_distance=5),
+                                                                 geometry.KNNEdge(k=10, min_distance=5)])
 
 _protein = data.Protein.pack([protein])
 protein_ = graph_construction_model(_protein)
@@ -201,9 +201,9 @@ We achieve this via the `layers.geometry.SequentialEdge` module.
 
 ```python
 graph_construction_model = layers.GraphConstruction(node_layers=[geometry.AlphaCarbonNode()], 
-                                                    edge_layers=[geometry.SpatialEdge(distance=10.0, sequence_distance=5),
-                                                                 geometry.KNNEdge(k=10, sequence_distance=5),
-                                                                 geometry.SequentialEdge(distance=2)])
+                                                    edge_layers=[geometry.SpatialEdge(radius=10.0, min_distance=5),
+                                                                 geometry.KNNEdge(k=10, min_distance=5),
+                                                                 geometry.SequentialEdge(max_distance=2)])
 
 _protein = data.Protein.pack([protein])
 protein_ = graph_construction_model(_protein)
@@ -299,9 +299,9 @@ in which an MLP prediction head is appended upon GearNet to derive all the task 
 
 ```python
 graph_construction_model = layers.GraphConstruction(node_layers=[geometry.AlphaCarbonNode()], 
-                                                    edge_layers=[geometry.SpatialEdge(distance=10.0, sequence_distance=5),
-                                                                 geometry.KNNEdge(k=10, sequence_distance=5),
-                                                                 geometry.SequentialEdge(distance=2)],
+                                                    edge_layers=[geometry.SpatialEdge(radius=10.0, min_distance=5),
+                                                                 geometry.KNNEdge(k=10, min_distance=5),
+                                                                 geometry.SequentialEdge(max_distance=2)],
                                                     edge_feature="gearnet")
 
 task = tasks.MultipleBinaryClassification(gearnet, graph_construction_model=graph_construction_model, num_mlp_layer=3,
@@ -335,9 +335,9 @@ in which an MLP prediction head is appended upon GearNet-Edge to derive all the 
 
 ```python
 graph_construction_model = layers.GraphConstruction(node_layers=[geometry.AlphaCarbonNode()], 
-                                                    edge_layers=[geometry.SpatialEdge(distance=10.0, sequence_distance=5),
-                                                                 geometry.KNNEdge(k=10, sequence_distance=5),
-                                                                 geometry.SequentialEdge(distance=2)],
+                                                    edge_layers=[geometry.SpatialEdge(radius=10.0, min_distance=5),
+                                                                 geometry.KNNEdge(k=10, min_distance=5),
+                                                                 geometry.SequentialEdge(max_distance=2)],
                                                     edge_feature="gearnet")
 
 task = tasks.MultipleBinaryClassification(gearnet_edge, graph_construction_model=graph_construction_model, num_mlp_layer=3, 

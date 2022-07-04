@@ -41,7 +41,7 @@ During dataset construction, we can pass the composition of two transformations 
 ```python
 from torchdrug import transforms
 
-truncate_transform = transforms.TruncateProtein(max_length=200, random=False, residue=True)
+truncate_transform = transforms.TruncateProtein(max_length=200, random=False)
 protein_view_transform = transforms.ProteinView(view="residue")
 transform = transforms.Compose([truncate_transform, protein_view_transform])
 ```
@@ -209,7 +209,7 @@ We first build the dataset via `datasets.PPIAffinity`, in which each sample is a
 Since we now need to perform transformation on both proteins, we need to specify `keys` in the transformation function.
 
 ```python
-truncate_transform_ = transforms.TruncateProtein(max_length=200, residue=True, keys=("graph1", "graph2"))
+truncate_transform_ = transforms.TruncateProtein(max_length=200, keys=("graph1", "graph2"))
 protein_view_transform_ = transforms.ProteinView(view="residue", keys=("graph1", "graph2"))
 transform_ = transforms.Compose([truncate_transform_, protein_view_transform_])
 dataset = datasets.PPIAffinity("~/protein-datasets/", residue_only=True, transform=transform_)
@@ -258,7 +258,7 @@ and it is associated with a continuous label indicating the binding affinity.
 We use the `holdout_test` set for test.
 
 ```python
-truncate_transform_ = transforms.TruncateProtein(max_length=200, residue=True, keys="graph1")
+truncate_transform_ = transforms.TruncateProtein(max_length=200, keys="graph1")
 protein_view_transform_ = transforms.ProteinView(view="residue", keys="graph1")
 transform_ = transforms.Compose([truncate_transform_, protein_view_transform_])
 dataset = datasets.BindingDB("~/protein-datasets/", residue_only=True, transform=transform_)
