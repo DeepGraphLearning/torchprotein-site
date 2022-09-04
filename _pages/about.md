@@ -65,6 +65,13 @@ team:
     title: Tsinghua University
     image: assets/images/team/runcheng_liu.jpg
 
+industrial:
+  title: Industrial Partner
+  items:
+    - image: assets/images/team/IBM_logo.svg
+    - image: assets/images/team/Intel_logo.svg
+    - image1: assets/images/team/NVIDIA_logo.svg
+
 collaborator:
   - name: Payel Das
     url: https://researcher.watson.ibm.com/researcher/view.php?person=us-daspa
@@ -104,3 +111,7 @@ For collaboration, please send an email to torchdrug@gmail.com
 # Collaborator
 
 {% include team.html id="collaborator" %}
+
+<!-- # Industrial Partner -->
+
+{% include team-image.html id="industrial" %}
