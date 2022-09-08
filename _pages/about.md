@@ -85,6 +85,18 @@ collaborator:
     url: https://researcher.watson.ibm.com/researcher/view.php?person=us-aclozano
     title: IBM Research
     image: assets/images/team/aurelie_lozano.jpeg
+  - name: Ade Ojewole
+    url: https://www.linkedin.com/in/gokeojewole/
+    title: NVIDIA
+    image: assets/images/team/ade_ojewole.jpeg
+  - name: Santiago Miret
+    url: https://www.linkedin.com/in/santiago-miret/
+    title: Intel
+    image: assets/images/team/santiago_miret.jpeg
+  - name: Sanchit Misra
+    url: https://www.linkedin.com/in/sanchit-misra-i-am-hiring-5b95634/
+    title: Intel
+    image: assets/images/team/sanchit_misra.jpeg
 ---
   
 TorchProtein is an open source project initiated by [MilaGraph], aiming at integrating the efforts from the community to boost machine learning guided protein science. 
