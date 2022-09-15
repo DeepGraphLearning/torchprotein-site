@@ -77,27 +77,27 @@ collaborator:
   - name: Payel Das
     url: https://researcher.watson.ibm.com/researcher/view.php?person=us-daspa
     title: IBM Research
-    image: assets/images/team/payel_das.jpeg
+    image: assets/images/team/payel_das.jpg
   - name: Vijil Chenthamarakshan
     url: https://researcher.watson.ibm.com/researcher/view.php?person=us-ecvijil
     title: IBM Research
-    image: assets/images/team/vijil.jpeg
+    image: assets/images/team/vijil_chenthamarakshan.jpg
   - name: Aurelie Lozano
     url: https://researcher.watson.ibm.com/researcher/view.php?person=us-aclozano
     title: IBM Research
-    image: assets/images/team/aurelie_lozano.jpeg
+    image: assets/images/team/aurelie_lozano.jpg
   - name: Ade Ojewole
     url: https://www.linkedin.com/in/gokeojewole/
     title: NVIDIA
-    image: assets/images/team/ade_ojewole.jpeg
+    image: assets/images/team/ade_ojewole.jpg
   - name: Santiago Miret
     url: https://www.linkedin.com/in/santiago-miret/
     title: Intel
-    image: assets/images/team/santiago_miret.jpeg
+    image: assets/images/team/santiago_miret.jpg
   - name: Sanchit Misra
     url: https://www.linkedin.com/in/sanchit-misra-i-am-hiring-5b95634/
     title: Intel
-    image: assets/images/team/sanchit_misra.jpeg
+    image: assets/images/team/sanchit_misra.jpg
 ---
   
 TorchProtein is an open source project initiated by [MilaGraph], aiming at integrating the efforts from the community to boost machine learning guided protein science. 
