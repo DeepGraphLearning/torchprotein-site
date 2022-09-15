@@ -9,21 +9,25 @@
     {% if image_grid.title %}
     <div class="row justify-content-center">
       <div class="col-12{% unless image_grid.url %} pb-4{% endunless %}">
-        <h1 style="text-align: center">{{ image_grid.title }}</h1>
+        <h1>{{ image_grid.title }}</h1>
       </div>
     </div>
 	  {% endif %}
     <div class="row justify-content-center">
       {% for item in image_grid.items %}
-      <div class="col-12 col-md-6 col-lg-3 pb-1">
-        <div class="feature">
-          {% if item.image %}
-          <div class="team-image"><img alt="{{ item.title }} logo" src="{{ item.image | relative_url }}" /></div>
-          {% else %}
-          <div class="team-image1"><img alt="{{ item.title }} logo" src="{{ item.image1 | relative_url }}" /></div>
-          {% endif %}
+        <div class="col-12 col-md-6 col-lg-3 pb-1">
+          <div class="feature">
+            {% if item.image %}
+            <div class="team-image"><img alt="{{ item.title }} logo" src="{{ item.image | relative_url }}" /></div>
+            {% else %}
+              {% if item.image0 %}
+              <div class="team-image0"><img alt="{{ item.title }} logo" src="{{ item.image0 | relative_url }}" /></div>
+              {% else %}
+              <div class="team-image1"><img alt="{{ item.title }} logo" src="{{ item.image1 | relative_url }}" /></div>
+              {% endif %}
+            {% endif %}
+          </div>
         </div>
-      </div>
       {% endfor %}
     </div>
   </div>

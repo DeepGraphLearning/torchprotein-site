@@ -1,6 +1,6 @@
 .feature {
   height: 100%;
-  border: 1px solid $white-offset;
+  // border: 1px solid $white-offset;
   border-radius: 3px;
   padding: 20px;
   background-color: #ffffff;
@@ -27,6 +27,14 @@
   .team-image1 {
     flex: 0 0 auto;
     width: 180px;
+    height: 80px;
+    display: flex;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .team-image0 {
+    flex: 0 0 auto;
+    width: 220px;
     height: 80px;
     display: flex;
     margin-bottom: 20px;

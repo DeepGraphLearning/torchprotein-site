@@ -68,6 +68,7 @@ team:
 industrial:
   title: Industrial Partner
   items:
+    - image0: assets/images/team/bio_geometry.png
     - image: assets/images/team/IBM_logo.svg
     - image: assets/images/team/Intel_logo.svg
     - image1: assets/images/team/NVIDIA_logo.svg
