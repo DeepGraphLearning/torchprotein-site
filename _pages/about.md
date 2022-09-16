@@ -26,7 +26,7 @@ leader:
 team:
   - name: Xinyu Yuan
     url: https://github.com/KatarinaYuan
-    title: Peking University
+    title: Mila - Quebec AI Institute
     image: assets/images/team/xinyu_yuan.jpg
   - name: Hendrik Strobelt
     url: http://hendrik.strobelt.com/
