@@ -124,7 +124,7 @@ To perform secondary structure prediction, we wrap the CNN encoder into the `tas
 ```python
 task = tasks.NodePropertyPrediction(model, criterion="ce", 
                                     metric=("micro_acc", "macro_acc"),
-                                    num_mlp_layer=2, num_class=[3])
+                                    num_mlp_layer=2, num_class=3)
 ```
 
 We train the model for 5 epochs, taking about 5 minutes, and finally evaluate it on the validation set.
