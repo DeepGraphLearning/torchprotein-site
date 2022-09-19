@@ -114,7 +114,7 @@ print("Duration of construction: ", end_time - start_time)
 print(seq_protein)
 
 start_time = time.time()
-seq_protein = data.Protein.from_sequence_fast(aa_seq)
+seq_protein = data.Protein.from_sequence(aa_seq, atom_feature=None, bond_feature=None, residue_feature="default")
 end_time = time.time()
 print("Duration of construction: ", end_time - start_time)
 print(seq_protein)

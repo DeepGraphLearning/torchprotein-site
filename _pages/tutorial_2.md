@@ -54,7 +54,7 @@ We can get the pre-specified training, validation and test splits by the `split(
 ```python
 from torchdrug import datasets
 
-dataset = datasets.BetaLactamase("~/protein-datasets/", residue_only=True, transform=transform)
+dataset = datasets.BetaLactamase("~/protein-datasets/", atom_feature=None, bond_feature=None, residue_feature="default", transform=transform)
 train_set, valid_set, test_set = dataset.split()
 print("The label of first sample: ", dataset[0][dataset.target_fields[0]])
 print("train samples: %d, valid samples: %d, test samples: %d" % (len(train_set), len(valid_set), len(test_set)))
@@ -106,7 +106,7 @@ The `target` field denotes the secondary structure (coil, strand or helix) of ea
 Both fields are with the same length of protein sequence.
 
 ```python
-dataset = datasets.SecondaryStructure("~/protein-datasets/", residue_only=True, transform=protein_view_transform)
+dataset = datasets.SecondaryStructure("~/protein-datasets/", atom_feature=None, bond_feature=None, residue_feature="default", transform=protein_view_transform)
 train_set, valid_set, test_set = dataset.split(["train", "valid", "cb513"])
 print("SS3 label: ", dataset[0]["graph"].target[:10])
 print("Valid mask: ", dataset[0]["graph"].mask[:10])
@@ -154,7 +154,7 @@ and the `mask` field denotes whether each residue position is valid or not.
 Both fields are with the same length of protein sequence.
 
 ```python
-dataset = datasets.ProteinNet("~/protein-datasets/", residue_only=True, transform=protein_view_transform)
+dataset = datasets.ProteinNet("~/protein-datasets/", atom_feature=None, bond_feature=None, residue_feature="default", transform=protein_view_transform)
 train_set, valid_set, test_set = dataset.split()
 print("Residue position: ", dataset[0]["graph"].residue_position[:3])
 print("Valid mask: ", dataset[0]["graph"].mask[:3])
@@ -212,7 +212,7 @@ Since we now need to perform transformation on both proteins, we need to specify
 truncate_transform_ = transforms.TruncateProtein(max_length=200, keys=("graph1", "graph2"))
 protein_view_transform_ = transforms.ProteinView(view="residue", keys=("graph1", "graph2"))
 transform_ = transforms.Compose([truncate_transform_, protein_view_transform_])
-dataset = datasets.PPIAffinity("~/protein-datasets/", residue_only=True, transform=transform_)
+dataset = datasets.PPIAffinity("~/protein-datasets/", atom_feature=None, bond_feature=None, residue_feature="default", transform=transform_)
 train_set, valid_set, test_set = dataset.split()
 print("The label of first sample: ", dataset[0][dataset.target_fields[0]])
 print("train samples: %d, valid samples: %d, test samples: %d" % (len(train_set), len(valid_set), len(test_set)))
@@ -261,7 +261,7 @@ We use the `holdout_test` set for test.
 truncate_transform_ = transforms.TruncateProtein(max_length=200, keys="graph1")
 protein_view_transform_ = transforms.ProteinView(view="residue", keys="graph1")
 transform_ = transforms.Compose([truncate_transform_, protein_view_transform_])
-dataset = datasets.BindingDB("~/protein-datasets/", residue_only=True, transform=transform_)
+dataset = datasets.BindingDB("~/protein-datasets/", atom_feature=None, bond_feature=None, residue_feature="default", transform=transform_)
 train_set, valid_set, test_set = dataset.split(["train", "valid", "holdout_test"])
 print("The label of first sample: ", dataset[0][dataset.target_fields[0]])
 print("train samples: %d, valid samples: %d, test samples: %d" % (len(train_set), len(valid_set), len(test_set)))
