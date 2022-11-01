@@ -49,12 +49,14 @@ The future instantiations will directly load this pickle file and are thus much 
 import time
 
 start_time = time.time()
-dataset = EnzymeCommissionToy("~/protein-datasets/", transform=transform)
+dataset = EnzymeCommissionToy("~/protein-datasets/", transform=transform, atom_feature=None, 
+                            bond_feature=None)
 end_time = time.time()
 print("Duration of first instantiation: ", end_time - start_time)
 
 start_time = time.time()
-dataset = EnzymeCommissionToy("~/protein-datasets/", transform=transform)
+dataset = EnzymeCommissionToy("~/protein-datasets/", transform=transform, atom_feature=None, 
+                            bond_feature=None)
 end_time = time.time()
 print("Duration of second instantiation: ", end_time - start_time)
 
