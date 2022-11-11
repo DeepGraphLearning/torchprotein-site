@@ -37,7 +37,7 @@ truncuate_transform = transforms.TruncateProtein(max_length=350, random=False)
 protein_view_transform = transforms.ProteinView(view='residue')
 transform = transforms.Compose([truncuate_transform, protein_view_transform])
 
-dataset = EnzymeCommissionToy("~/protein-datasets/", transform=transform)
+dataset = EnzymeCommissionToy("~/protein-datasets/", transform=transform, atom_feature=None, bond_feature=None)
 train_set, valid_set, test_set = dataset.split()
 print(dataset)
 print("train samples: %d, valid samples: %d, test samples: %d" % (len(train_set), len(valid_set), len(test_set)))
